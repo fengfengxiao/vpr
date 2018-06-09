@@ -1,0 +1,8 @@
+com\hjjc\dao\mapper\Type1DataMapper.class
+com\hjjc\dao\mapper\UsersMapper.class
+com\hjjc\dao\mapper\EventDateReportCodeTableMapper.class
+com\hjjc\dao\mapper\DeviceRelationsMapper.class
+com\hjjc\dao\mapper\HistoryDataMapper.class
+com\hjjc\dao\mapper\DevicesMapper.class
+com\hjjc\dao\mapper\EventDateReportMapper.class
+com\hjjc\dao\mapper\CompanyMapper.class

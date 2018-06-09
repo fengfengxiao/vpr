@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjjc.dao.mapper.HistoryDataMapper">
+  <resultMap id="BaseResultMap" type="com.hjjc.model.HistoryData">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    <id column="DeviceID" jdbcType="NVARCHAR" property="deviceID" />
+    <id column="DataTime_Hour" jdbcType="TIMESTAMP" property="dataTime_Hour" />
+    <result column="CurrentA" jdbcType="REAL" property="currentA" />
+    <result column="CurrentB" jdbcType="REAL" property="currentB" />
+    <result column="CurrentC" jdbcType="REAL" property="currentC" />
+    <result column="VoltA" jdbcType="REAL" property="voltA" />
+    <result column="VoltB" jdbcType="REAL" property="voltB" />
+    <result column="VoltC" jdbcType="REAL" property="voltC" />
+    <result column="isAvailable" jdbcType="BIT" property="isAvailable" />
+    <result column="isCalculate" jdbcType="BIT" property="isCalculate" />
+    <result column="EnergyA" jdbcType="REAL" property="energyA" />
+    <result column="EnergyB" jdbcType="REAL" property="energyB" />
+    <result column="EnergyC" jdbcType="REAL" property="energyC" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    DeviceID, DataTime_Hour, CurrentA, CurrentB, CurrentC, VoltA, VoltB, VoltC, isAvailable, 
+    isCalculate, EnergyA, EnergyB, EnergyC
+  </sql>
+  <select id="selectByExample" parameterType="com.hjjc.model.HistoryDataCriteria" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from HistoryData
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.hjjc.model.HistoryDataKey" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from HistoryData
+    where DeviceID = #{deviceID,jdbcType=NVARCHAR}
+      and DataTime_Hour = #{dataTime_Hour,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.hjjc.model.HistoryDataKey">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    delete from HistoryData
+    where DeviceID = #{deviceID,jdbcType=NVARCHAR}
+      and DataTime_Hour = #{dataTime_Hour,jdbcType=TIMESTAMP}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hjjc.model.HistoryDataCriteria">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    delete from HistoryData
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hjjc.model.HistoryData">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    insert into HistoryData (DeviceID, DataTime_Hour, CurrentA, 
+      CurrentB, CurrentC, VoltA, VoltB, 
+      VoltC, isAvailable, isCalculate, 
+      EnergyA, EnergyB, EnergyC)
+    values (#{deviceID,jdbcType=NVARCHAR}, #{dataTime_Hour,jdbcType=TIMESTAMP}, #{currentA,jdbcType=REAL}, 
+      #{currentB,jdbcType=REAL}, #{currentC,jdbcType=REAL}, #{voltA,jdbcType=REAL}, #{voltB,jdbcType=REAL}, 
+      #{voltC,jdbcType=REAL}, #{isAvailable,jdbcType=BIT}, #{isCalculate,jdbcType=BIT}, 
+      #{energyA,jdbcType=REAL}, #{energyB,jdbcType=REAL}, #{energyC,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjjc.model.HistoryData">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    insert into HistoryData
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceID != null">
+        DeviceID,
+      </if>
+      <if test="dataTime_Hour != null">
+        DataTime_Hour,
+      </if>
+      <if test="currentA != null">
+        CurrentA,
+      </if>
+      <if test="currentB != null">
+        CurrentB,
+      </if>
+      <if test="currentC != null">
+        CurrentC,
+      </if>
+      <if test="voltA != null">
+        VoltA,
+      </if>
+      <if test="voltB != null">
+        VoltB,
+      </if>
+      <if test="voltC != null">
+        VoltC,
+      </if>
+      <if test="isAvailable != null">
+        isAvailable,
+      </if>
+      <if test="isCalculate != null">
+        isCalculate,
+      </if>
+      <if test="energyA != null">
+        EnergyA,
+      </if>
+      <if test="energyB != null">
+        EnergyB,
+      </if>
+      <if test="energyC != null">
+        EnergyC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceID != null">
+        #{deviceID,jdbcType=NVARCHAR},
+      </if>
+      <if test="dataTime_Hour != null">
+        #{dataTime_Hour,jdbcType=TIMESTAMP},
+      </if>
+      <if test="currentA != null">
+        #{currentA,jdbcType=REAL},
+      </if>
+      <if test="currentB != null">
+        #{currentB,jdbcType=REAL},
+      </if>
+      <if test="currentC != null">
+        #{currentC,jdbcType=REAL},
+      </if>
+      <if test="voltA != null">
+        #{voltA,jdbcType=REAL},
+      </if>
+      <if test="voltB != null">
+        #{voltB,jdbcType=REAL},
+      </if>
+      <if test="voltC != null">
+        #{voltC,jdbcType=REAL},
+      </if>
+      <if test="isAvailable != null">
+        #{isAvailable,jdbcType=BIT},
+      </if>
+      <if test="isCalculate != null">
+        #{isCalculate,jdbcType=BIT},
+      </if>
+      <if test="energyA != null">
+        #{energyA,jdbcType=REAL},
+      </if>
+      <if test="energyB != null">
+        #{energyB,jdbcType=REAL},
+      </if>
+      <if test="energyC != null">
+        #{energyC,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjjc.model.HistoryDataCriteria" resultType="java.lang.Integer">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    select count(*) from HistoryData
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    update HistoryData
+    <set>
+      <if test="record.deviceID != null">
+        DeviceID = #{record.deviceID,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.dataTime_Hour != null">
+        DataTime_Hour = #{record.dataTime_Hour,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.currentA != null">
+        CurrentA = #{record.currentA,jdbcType=REAL},
+      </if>
+      <if test="record.currentB != null">
+        CurrentB = #{record.currentB,jdbcType=REAL},
+      </if>
+      <if test="record.currentC != null">
+        CurrentC = #{record.currentC,jdbcType=REAL},
+      </if>
+      <if test="record.voltA != null">
+        VoltA = #{record.voltA,jdbcType=REAL},
+      </if>
+      <if test="record.voltB != null">
+        VoltB = #{record.voltB,jdbcType=REAL},
+      </if>
+      <if test="record.voltC != null">
+        VoltC = #{record.voltC,jdbcType=REAL},
+      </if>
+      <if test="record.isAvailable != null">
+        isAvailable = #{record.isAvailable,jdbcType=BIT},
+      </if>
+      <if test="record.isCalculate != null">
+        isCalculate = #{record.isCalculate,jdbcType=BIT},
+      </if>
+      <if test="record.energyA != null">
+        EnergyA = #{record.energyA,jdbcType=REAL},
+      </if>
+      <if test="record.energyB != null">
+        EnergyB = #{record.energyB,jdbcType=REAL},
+      </if>
+      <if test="record.energyC != null">
+        EnergyC = #{record.energyC,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    update HistoryData
+    set DeviceID = #{record.deviceID,jdbcType=NVARCHAR},
+      DataTime_Hour = #{record.dataTime_Hour,jdbcType=TIMESTAMP},
+      CurrentA = #{record.currentA,jdbcType=REAL},
+      CurrentB = #{record.currentB,jdbcType=REAL},
+      CurrentC = #{record.currentC,jdbcType=REAL},
+      VoltA = #{record.voltA,jdbcType=REAL},
+      VoltB = #{record.voltB,jdbcType=REAL},
+      VoltC = #{record.voltC,jdbcType=REAL},
+      isAvailable = #{record.isAvailable,jdbcType=BIT},
+      isCalculate = #{record.isCalculate,jdbcType=BIT},
+      EnergyA = #{record.energyA,jdbcType=REAL},
+      EnergyB = #{record.energyB,jdbcType=REAL},
+      EnergyC = #{record.energyC,jdbcType=REAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjjc.model.HistoryData">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    update HistoryData
+    <set>
+      <if test="currentA != null">
+        CurrentA = #{currentA,jdbcType=REAL},
+      </if>
+      <if test="currentB != null">
+        CurrentB = #{currentB,jdbcType=REAL},
+      </if>
+      <if test="currentC != null">
+        CurrentC = #{currentC,jdbcType=REAL},
+      </if>
+      <if test="voltA != null">
+        VoltA = #{voltA,jdbcType=REAL},
+      </if>
+      <if test="voltB != null">
+        VoltB = #{voltB,jdbcType=REAL},
+      </if>
+      <if test="voltC != null">
+        VoltC = #{voltC,jdbcType=REAL},
+      </if>
+      <if test="isAvailable != null">
+        isAvailable = #{isAvailable,jdbcType=BIT},
+      </if>
+      <if test="isCalculate != null">
+        isCalculate = #{isCalculate,jdbcType=BIT},
+      </if>
+      <if test="energyA != null">
+        EnergyA = #{energyA,jdbcType=REAL},
+      </if>
+      <if test="energyB != null">
+        EnergyB = #{energyB,jdbcType=REAL},
+      </if>
+      <if test="energyC != null">
+        EnergyC = #{energyC,jdbcType=REAL},
+      </if>
+    </set>
+    where DeviceID = #{deviceID,jdbcType=NVARCHAR}
+      and DataTime_Hour = #{dataTime_Hour,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjjc.model.HistoryData">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    update HistoryData
+    set CurrentA = #{currentA,jdbcType=REAL},
+      CurrentB = #{currentB,jdbcType=REAL},
+      CurrentC = #{currentC,jdbcType=REAL},
+      VoltA = #{voltA,jdbcType=REAL},
+      VoltB = #{voltB,jdbcType=REAL},
+      VoltC = #{voltC,jdbcType=REAL},
+      isAvailable = #{isAvailable,jdbcType=BIT},
+      isCalculate = #{isCalculate,jdbcType=BIT},
+      EnergyA = #{energyA,jdbcType=REAL},
+      EnergyB = #{energyB,jdbcType=REAL},
+      EnergyC = #{energyC,jdbcType=REAL}
+    where DeviceID = #{deviceID,jdbcType=NVARCHAR}
+      and DataTime_Hour = #{dataTime_Hour,jdbcType=TIMESTAMP}
+  </update>
+</mapper>

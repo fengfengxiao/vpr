@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjjc.dao.mapper.CompanyMapper">
+  <resultMap id="BaseResultMap" type="com.hjjc.model.Company">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    <id column="companyID" jdbcType="NCHAR" property="companyID" />
+    <result column="companyName" jdbcType="NVARCHAR" property="companyName" />
+    <result column="divisions" jdbcType="NVARCHAR" property="divisions" />
+    <result column="jd" jdbcType="VARCHAR" property="jd" />
+    <result column="wd" jdbcType="VARCHAR" property="wd" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    companyID, companyName, divisions, jd, wd
+  </sql>
+  <select id="selectByExample" parameterType="com.hjjc.model.CompanyCriteria" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Company
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from Company
+    where companyID = #{companyID,jdbcType=NCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    delete from Company
+    where companyID = #{companyID,jdbcType=NCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hjjc.model.CompanyCriteria">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    delete from Company
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hjjc.model.Company">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    insert into Company (companyID, companyName, divisions, 
+      jd, wd)
+    values (#{companyID,jdbcType=NCHAR}, #{companyName,jdbcType=NVARCHAR}, #{divisions,jdbcType=NVARCHAR}, 
+      #{jd,jdbcType=VARCHAR}, #{wd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjjc.model.Company">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    insert into Company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyID != null">
+        companyID,
+      </if>
+      <if test="companyName != null">
+        companyName,
+      </if>
+      <if test="divisions != null">
+        divisions,
+      </if>
+      <if test="jd != null">
+        jd,
+      </if>
+      <if test="wd != null">
+        wd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyID != null">
+        #{companyID,jdbcType=NCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=NVARCHAR},
+      </if>
+      <if test="divisions != null">
+        #{divisions,jdbcType=NVARCHAR},
+      </if>
+      <if test="jd != null">
+        #{jd,jdbcType=VARCHAR},
+      </if>
+      <if test="wd != null">
+        #{wd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjjc.model.CompanyCriteria" resultType="java.lang.Integer">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    select count(*) from Company
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <!-- 查询所有公司的总生产设备总数 -->
+  <select id="countAllCompanyDeviceCount"  resultType="map">
+    select CompanyID,count(DeviceID) as deviceCount from Devices
+	  where DeviceType = '生产设备'
+	  group by CompanyID
+  </select>
+  <!-- 查询某天公司异常设备数量 -->
+  <select id="countCompanyExceptDeviceCount" parameterType="java.lang.String" resultType="map">
+      select count(DeviceID) as exceptionDeviceCount,CompanyID from(
+	  select distinct(er.DeviceID),d.CompanyID from EventDateReport er
+	  join Devices d  on er.DeviceID = d.DeviceID
+	  where CONVERT(varchar(100), er.DateTime, 23) = #{day,jdbcType=VARCHAR}  )table1
+	  group by CompanyID
+  </select>
+  <!-- 查询公司离线设备数量 -->
+  <select id="countCompanyOfflineDeviceCount"  resultType="map">
+     select count(*) as offlineDeviceCount,CompanyID from Devices
+	  where DeviceType = '生产设备' and DATEDIFF(N,LastDataTime,GETDATE()) > 60
+	  group by CompanyID
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    update Company
+    <set>
+      <if test="record.companyID != null">
+        companyID = #{record.companyID,jdbcType=NCHAR},
+      </if>
+      <if test="record.companyName != null">
+        companyName = #{record.companyName,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.divisions != null">
+        divisions = #{record.divisions,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.jd != null">
+        jd = #{record.jd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wd != null">
+        wd = #{record.wd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    update Company
+    set companyID = #{record.companyID,jdbcType=NCHAR},
+      companyName = #{record.companyName,jdbcType=NVARCHAR},
+      divisions = #{record.divisions,jdbcType=NVARCHAR},
+      jd = #{record.jd,jdbcType=VARCHAR},
+      wd = #{record.wd,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjjc.model.Company">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    update Company
+    <set>
+      <if test="companyName != null">
+        companyName = #{companyName,jdbcType=NVARCHAR},
+      </if>
+      <if test="divisions != null">
+        divisions = #{divisions,jdbcType=NVARCHAR},
+      </if>
+      <if test="jd != null">
+        jd = #{jd,jdbcType=VARCHAR},
+      </if>
+      <if test="wd != null">
+        wd = #{wd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where companyID = #{companyID,jdbcType=NCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjjc.model.Company">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    update Company
+    set companyName = #{companyName,jdbcType=NVARCHAR},
+      divisions = #{divisions,jdbcType=NVARCHAR},
+      jd = #{jd,jdbcType=VARCHAR},
+      wd = #{wd,jdbcType=VARCHAR}
+    where companyID = #{companyID,jdbcType=NCHAR}
+  </update>
+</mapper>

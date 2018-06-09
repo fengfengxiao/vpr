@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjjc.dao.mapper.Type1DataMapper">
+  <resultMap id="BaseResultMap" type="com.hjjc.model.Type1Data">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    <id column="DeviceID" jdbcType="NVARCHAR" property="deviceID" />
+    <result column="DataTime" jdbcType="TIMESTAMP" property="dataTime" />
+    <result column="Current_A" jdbcType="DOUBLE" property="current_A" />
+    <result column="Current_B" jdbcType="DOUBLE" property="current_B" />
+    <result column="Current_C" jdbcType="DOUBLE" property="current_C" />
+    <result column="VoltA" jdbcType="DOUBLE" property="voltA" />
+    <result column="VoltB" jdbcType="DOUBLE" property="voltB" />
+    <result column="VoltC" jdbcType="DOUBLE" property="voltC" />
+    <result column="isAvailable" jdbcType="BIT" property="isAvailable" />
+    <result column="isCalculate" jdbcType="BIT" property="isCalculate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    DeviceID, DataTime, Current_A, Current_B, Current_C, VoltA, VoltB, VoltC, isAvailable, 
+    isCalculate
+  </sql>
+  <select id="selectByExample" parameterType="com.hjjc.model.Type1DataCriteria" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Type1Data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from Type1Data
+    where DeviceID = #{deviceID,jdbcType=NVARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    delete from Type1Data
+    where DeviceID = #{deviceID,jdbcType=NVARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hjjc.model.Type1DataCriteria">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    delete from Type1Data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hjjc.model.Type1Data">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    insert into Type1Data (DeviceID, DataTime, Current_A, 
+      Current_B, Current_C, VoltA, 
+      VoltB, VoltC, isAvailable, 
+      isCalculate)
+    values (#{deviceID,jdbcType=NVARCHAR}, #{dataTime,jdbcType=TIMESTAMP}, #{current_A,jdbcType=DOUBLE}, 
+      #{current_B,jdbcType=DOUBLE}, #{current_C,jdbcType=DOUBLE}, #{voltA,jdbcType=DOUBLE}, 
+      #{voltB,jdbcType=DOUBLE}, #{voltC,jdbcType=DOUBLE}, #{isAvailable,jdbcType=BIT}, 
+      #{isCalculate,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjjc.model.Type1Data">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    insert into Type1Data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceID != null">
+        DeviceID,
+      </if>
+      <if test="dataTime != null">
+        DataTime,
+      </if>
+      <if test="current_A != null">
+        Current_A,
+      </if>
+      <if test="current_B != null">
+        Current_B,
+      </if>
+      <if test="current_C != null">
+        Current_C,
+      </if>
+      <if test="voltA != null">
+        VoltA,
+      </if>
+      <if test="voltB != null">
+        VoltB,
+      </if>
+      <if test="voltC != null">
+        VoltC,
+      </if>
+      <if test="isAvailable != null">
+        isAvailable,
+      </if>
+      <if test="isCalculate != null">
+        isCalculate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceID != null">
+        #{deviceID,jdbcType=NVARCHAR},
+      </if>
+      <if test="dataTime != null">
+        #{dataTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="current_A != null">
+        #{current_A,jdbcType=DOUBLE},
+      </if>
+      <if test="current_B != null">
+        #{current_B,jdbcType=DOUBLE},
+      </if>
+      <if test="current_C != null">
+        #{current_C,jdbcType=DOUBLE},
+      </if>
+      <if test="voltA != null">
+        #{voltA,jdbcType=DOUBLE},
+      </if>
+      <if test="voltB != null">
+        #{voltB,jdbcType=DOUBLE},
+      </if>
+      <if test="voltC != null">
+        #{voltC,jdbcType=DOUBLE},
+      </if>
+      <if test="isAvailable != null">
+        #{isAvailable,jdbcType=BIT},
+      </if>
+      <if test="isCalculate != null">
+        #{isCalculate,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjjc.model.Type1DataCriteria" resultType="java.lang.Integer">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    select count(*) from Type1Data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    update Type1Data
+    <set>
+      <if test="record.deviceID != null">
+        DeviceID = #{record.deviceID,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.dataTime != null">
+        DataTime = #{record.dataTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.current_A != null">
+        Current_A = #{record.current_A,jdbcType=DOUBLE},
+      </if>
+      <if test="record.current_B != null">
+        Current_B = #{record.current_B,jdbcType=DOUBLE},
+      </if>
+      <if test="record.current_C != null">
+        Current_C = #{record.current_C,jdbcType=DOUBLE},
+      </if>
+      <if test="record.voltA != null">
+        VoltA = #{record.voltA,jdbcType=DOUBLE},
+      </if>
+      <if test="record.voltB != null">
+        VoltB = #{record.voltB,jdbcType=DOUBLE},
+      </if>
+      <if test="record.voltC != null">
+        VoltC = #{record.voltC,jdbcType=DOUBLE},
+      </if>
+      <if test="record.isAvailable != null">
+        isAvailable = #{record.isAvailable,jdbcType=BIT},
+      </if>
+      <if test="record.isCalculate != null">
+        isCalculate = #{record.isCalculate,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    update Type1Data
+    set DeviceID = #{record.deviceID,jdbcType=NVARCHAR},
+      DataTime = #{record.dataTime,jdbcType=TIMESTAMP},
+      Current_A = #{record.current_A,jdbcType=DOUBLE},
+      Current_B = #{record.current_B,jdbcType=DOUBLE},
+      Current_C = #{record.current_C,jdbcType=DOUBLE},
+      VoltA = #{record.voltA,jdbcType=DOUBLE},
+      VoltB = #{record.voltB,jdbcType=DOUBLE},
+      VoltC = #{record.voltC,jdbcType=DOUBLE},
+      isAvailable = #{record.isAvailable,jdbcType=BIT},
+      isCalculate = #{record.isCalculate,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjjc.model.Type1Data">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    update Type1Data
+    <set>
+      <if test="dataTime != null">
+        DataTime = #{dataTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="current_A != null">
+        Current_A = #{current_A,jdbcType=DOUBLE},
+      </if>
+      <if test="current_B != null">
+        Current_B = #{current_B,jdbcType=DOUBLE},
+      </if>
+      <if test="current_C != null">
+        Current_C = #{current_C,jdbcType=DOUBLE},
+      </if>
+      <if test="voltA != null">
+        VoltA = #{voltA,jdbcType=DOUBLE},
+      </if>
+      <if test="voltB != null">
+        VoltB = #{voltB,jdbcType=DOUBLE},
+      </if>
+      <if test="voltC != null">
+        VoltC = #{voltC,jdbcType=DOUBLE},
+      </if>
+      <if test="isAvailable != null">
+        isAvailable = #{isAvailable,jdbcType=BIT},
+      </if>
+      <if test="isCalculate != null">
+        isCalculate = #{isCalculate,jdbcType=BIT},
+      </if>
+    </set>
+    where DeviceID = #{deviceID,jdbcType=NVARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjjc.model.Type1Data">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:30.
+    -->
+    update Type1Data
+    set DataTime = #{dataTime,jdbcType=TIMESTAMP},
+      Current_A = #{current_A,jdbcType=DOUBLE},
+      Current_B = #{current_B,jdbcType=DOUBLE},
+      Current_C = #{current_C,jdbcType=DOUBLE},
+      VoltA = #{voltA,jdbcType=DOUBLE},
+      VoltB = #{voltB,jdbcType=DOUBLE},
+      VoltC = #{voltC,jdbcType=DOUBLE},
+      isAvailable = #{isAvailable,jdbcType=BIT},
+      isCalculate = #{isCalculate,jdbcType=BIT}
+    where DeviceID = #{deviceID,jdbcType=NVARCHAR}
+  </update>
+</mapper>

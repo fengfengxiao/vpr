@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjjc.dao.mapper.DeviceRelationsMapper">
+  <resultMap id="BaseResultMap" type="com.hjjc.model.DeviceRelations">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    <id column="DR_id" jdbcType="INTEGER" property="DR_id" />
+    <result column="SCDeviceID" jdbcType="NCHAR" property="SCDeviceID" />
+    <result column="HBDeviceID" jdbcType="NCHAR" property="HBDeviceID" />
+    <result column="CompanyID" jdbcType="NCHAR" property="companyID" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    DR_id, SCDeviceID, HBDeviceID, CompanyID
+  </sql>
+  <select id="selectByExample" parameterType="com.hjjc.model.DeviceRelationsCriteria" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from DeviceRelations
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from DeviceRelations
+    where DR_id = #{DR_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    delete from DeviceRelations
+    where DR_id = #{DR_id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hjjc.model.DeviceRelationsCriteria">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    delete from DeviceRelations
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hjjc.model.DeviceRelations">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    insert into DeviceRelations (DR_id, SCDeviceID, HBDeviceID, 
+      CompanyID)
+    values (#{DR_id,jdbcType=INTEGER}, #{SCDeviceID,jdbcType=NCHAR}, #{HBDeviceID,jdbcType=NCHAR}, 
+      #{companyID,jdbcType=NCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjjc.model.DeviceRelations">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    insert into DeviceRelations
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="DR_id != null">
+        DR_id,
+      </if>
+      <if test="SCDeviceID != null">
+        SCDeviceID,
+      </if>
+      <if test="HBDeviceID != null">
+        HBDeviceID,
+      </if>
+      <if test="companyID != null">
+        CompanyID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="DR_id != null">
+        #{DR_id,jdbcType=INTEGER},
+      </if>
+      <if test="SCDeviceID != null">
+        #{SCDeviceID,jdbcType=NCHAR},
+      </if>
+      <if test="HBDeviceID != null">
+        #{HBDeviceID,jdbcType=NCHAR},
+      </if>
+      <if test="companyID != null">
+        #{companyID,jdbcType=NCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjjc.model.DeviceRelationsCriteria" resultType="java.lang.Integer">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    select count(*) from DeviceRelations
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    update DeviceRelations
+    <set>
+      <if test="record.DR_id != null">
+        DR_id = #{record.DR_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.SCDeviceID != null">
+        SCDeviceID = #{record.SCDeviceID,jdbcType=NCHAR},
+      </if>
+      <if test="record.HBDeviceID != null">
+        HBDeviceID = #{record.HBDeviceID,jdbcType=NCHAR},
+      </if>
+      <if test="record.companyID != null">
+        CompanyID = #{record.companyID,jdbcType=NCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    update DeviceRelations
+    set DR_id = #{record.DR_id,jdbcType=INTEGER},
+      SCDeviceID = #{record.SCDeviceID,jdbcType=NCHAR},
+      HBDeviceID = #{record.HBDeviceID,jdbcType=NCHAR},
+      CompanyID = #{record.companyID,jdbcType=NCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjjc.model.DeviceRelations">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    update DeviceRelations
+    <set>
+      <if test="SCDeviceID != null">
+        SCDeviceID = #{SCDeviceID,jdbcType=NCHAR},
+      </if>
+      <if test="HBDeviceID != null">
+        HBDeviceID = #{HBDeviceID,jdbcType=NCHAR},
+      </if>
+      <if test="companyID != null">
+        CompanyID = #{companyID,jdbcType=NCHAR},
+      </if>
+    </set>
+    where DR_id = #{DR_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjjc.model.DeviceRelations">
+    <!--
+      WARNING - @mbggenerated
+      Generated on 2018-03-27 16:27:29.
+    -->
+    update DeviceRelations
+    set SCDeviceID = #{SCDeviceID,jdbcType=NCHAR},
+      HBDeviceID = #{HBDeviceID,jdbcType=NCHAR},
+      CompanyID = #{companyID,jdbcType=NCHAR}
+    where DR_id = #{DR_id,jdbcType=INTEGER}
+  </update>
+</mapper>
